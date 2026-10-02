@@ -4,17 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "framer-motion": "^12.38.0",
+    "framer-motion": "^12.4.7",
     "lucide-react": "^0.475.0",
-    "mongodb": "^7.6.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
