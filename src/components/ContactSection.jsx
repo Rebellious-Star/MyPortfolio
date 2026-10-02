@@ -6,6 +6,13 @@ import SpotlightGlassCard from './SpotlightGlassCard';
 export default function ContactSection({ onHoverStart, onHoverEnd }) {
   const [copiedKey, setCopiedKey] = useState(null);
 
+  // Environment variables with fallbacks
+  const phoneVal = import.meta.env.VITE_CONTACT_PHONE || '9234154895';
+  const emailVal = import.meta.env.VITE_CONTACT_EMAIL || 'dhruveloper2005@gmail.com';
+  const githubVal = import.meta.env.VITE_GITHUB_URL || 'https://github.com/Rebellious-Star';
+  const linkedinVal = import.meta.env.VITE_LINKEDIN_URL || 'https://linkedin.com/in/dhruv-pandey-91a333312';
+  const ownerName = import.meta.env.VITE_PORTFOLIO_OWNER || 'Dhruv';
+
   const copyToClipboard = (text, key) => {
     navigator.clipboard.writeText(text);
     setCopiedKey(key);
@@ -13,11 +20,11 @@ export default function ContactSection({ onHoverStart, onHoverEnd }) {
   };
 
   const copyAllContact = () => {
-    const fullCard = `Dhruv Pandey | Creative Technologist & Full-Stack Developer
-Phone: +91 9234154895
-Email: dhruveloper2005@gmail.com
-GitHub: https://github.com/Rebellious-Star
-LinkedIn: https://linkedin.com/in/dhruv-pandey-91a333312`;
+    const fullCard = `${ownerName} Pandey | Creative Technologist & Full-Stack Developer
+Phone: +91 ${phoneVal}
+Email: ${emailVal}
+GitHub: ${githubVal}
+LinkedIn: ${linkedinVal}`;
     copyToClipboard(fullCard, 'all');
   };
 
@@ -25,36 +32,36 @@ LinkedIn: https://linkedin.com/in/dhruv-pandey-91a333312`;
     {
       key: 'phone',
       label: 'Phone',
-      value: '9234154895',
-      href: 'tel:9234154895',
-      displayValue: '+91 9234154895',
+      value: phoneVal,
+      href: `tel:${phoneVal}`,
+      displayValue: `+91 ${phoneVal}`,
       icon: Phone,
       isExternal: false,
     },
     {
       key: 'email',
       label: 'Email',
-      value: 'dhruveloper2005@gmail.com',
-      href: 'mailto:dhruveloper2005@gmail.com',
-      displayValue: 'dhruveloper2005@gmail.com',
+      value: emailVal,
+      href: `mailto:${emailVal}`,
+      displayValue: emailVal,
       icon: Mail,
       isExternal: false,
     },
     {
       key: 'github',
       label: 'GitHub',
-      value: 'https://github.com/Rebellious-Star',
-      href: 'https://github.com/Rebellious-Star',
-      displayValue: 'github.com/Rebellious-Star',
+      value: githubVal,
+      href: githubVal,
+      displayValue: githubVal.replace('https://', ''),
       icon: Github,
       isExternal: true,
     },
     {
       key: 'linkedin',
       label: 'LinkedIn',
-      value: 'https://linkedin.com/in/dhruv-pandey-91a333312',
-      href: 'https://linkedin.com/in/dhruv-pandey-91a333312',
-      displayValue: 'linkedin.com/in/dhruv-pandey-91a333312',
+      value: linkedinVal,
+      href: linkedinVal,
+      displayValue: linkedinVal.replace('https://', ''),
       icon: Linkedin,
       isExternal: true,
     },
@@ -109,12 +116,12 @@ LinkedIn: https://linkedin.com/in/dhruv-pandey-91a333312`;
 
       {/* Bento Grid Contact Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-        {contactItems.map((item, idx) => {
+        {contactItems.map((item) => {
           const Icon = item.icon;
           const isCopied = copiedKey === item.key;
 
           return (
-            <ScrollReveal key={item.key} animation="fade-up" delay={idx * 120}>
+            <ScrollReveal key={item.key} animation="fade-up">
               <SpotlightGlassCard
                 onMouseEnter={onHoverStart}
                 onMouseLeave={onHoverEnd}
@@ -175,7 +182,7 @@ LinkedIn: https://linkedin.com/in/dhruv-pandey-91a333312`;
       </div>
 
       {/* Short About & Thank You Editorial Card */}
-      <ScrollReveal animation="scale-up" delay={300}>
+      <ScrollReveal animation="scale-up">
         <SpotlightGlassCard
           onMouseEnter={onHoverStart}
           onMouseLeave={onHoverEnd}
@@ -189,13 +196,13 @@ LinkedIn: https://linkedin.com/in/dhruv-pandey-91a333312`;
             </h3>
 
             <p className="text-base sm:text-lg font-light text-white/90 leading-relaxed mb-8">
-              I'm <strong className="font-semibold text-white">Dhruv</strong>, a third-year CSE student and creative technologist exploring the intersection of <strong className="text-white">UI/UX, AI/ML, web development, and 3D experiences</strong>.
+              I'm <strong className="font-semibold text-white">{ownerName}</strong>, a third-year CSE student and creative technologist exploring the intersection of <strong className="text-white">UI/UX, AI/ML, web development, and 3D experiences</strong>.
               I build interactive products, experiment with emerging technologies, and use AI-assisted workflows to turn ideas into working experiences. Currently building <strong className="text-white">HEPTOVERSE</strong>.
             </p>
 
             <div className="pt-8 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="font-cursive text-4xl text-white text-glow">
-                Dhruv Pandey
+                {ownerName} Pandey
               </div>
 
               <div className="text-xs sm:text-sm font-semibold tracking-widest text-white/70 uppercase flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
