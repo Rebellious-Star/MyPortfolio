@@ -52,17 +52,19 @@
 }
 
 .box-glow {
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15), 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2), 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* HIGH-CONTRAST ULTRA-PROMINENT FROSTED GLASS CARDS */
 .glass-card {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.5), 0 20px 45px rgba(0, 0, 0, 0.35);
   position: relative;
   overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card::before {
@@ -70,27 +72,27 @@
   position: absolute;
   top: 0;
   left: -100%;
-  width: 50%;
+  width: 60%;
   height: 100%;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.2),
     transparent
   );
-  transform: skewX(-20deg);
+  transform: skewX(-25deg);
   transition: 0.75s;
   pointer-events: none;
 }
 
 .glass-card:hover::before {
-  left: 150%;
+  left: 160%;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 100%);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 3px 0 rgba(255, 255, 255, 0.7), 0 30px 60px rgba(0, 0, 0, 0.45), 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
 /* Floating Light Orbs */
@@ -100,8 +102,8 @@
 }
 
 @keyframes pulseGlow {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.1); }
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.15); }
 }
 
 .animate-float {

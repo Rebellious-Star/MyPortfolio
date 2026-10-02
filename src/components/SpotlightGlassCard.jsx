@@ -19,7 +19,7 @@ export default function SpotlightGlassCard({
     const y = e.clientY - rect.top;
     setMousePos({ x, y });
 
-    // Calculate subtle 3D tilt (-6 to 6 deg)
+    // Calculate subtle 3D tilt (-5 to 5 deg)
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     const tiltX = ((y - centerY) / centerY) * -5;
@@ -52,14 +52,14 @@ export default function SpotlightGlassCard({
           : 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)',
         transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out',
       }}
-      className={`glass-card rounded-3xl relative overflow-hidden border border-white/20 transition-all duration-300 shadow-xl ${className}`}
+      className={`glass-card rounded-3xl relative overflow-hidden transition-all duration-300 ${className}`}
     >
       {/* Dynamic Cursor Spotlight Radial Glow */}
       <div
         className="pointer-events-none absolute inset-0 transition-opacity duration-300 z-10"
         style={{
           opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 255, 255, 0.18), transparent 70%)`,
+          background: `radial-gradient(450px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 255, 255, 0.28), transparent 70%)`,
         }}
       />
       {children}
